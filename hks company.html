@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<title>Minecraft Hub PRO</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #0b0b0b;
+  color: white;
+}
+
+/* NAV */
+nav {
+  display: flex;
+  justify-content: center;
+  background: #1a1a1a;
+  padding: 15px;
+  position: sticky;
+  top: 0;
+}
+
+nav a {
+  color: white;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: #00ffcc;
+}
+
+/* SECTIONS */
+section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+h1 {
+  color: #00ffcc;
+  font-size: 40px;
+}
+
+/* CARDS */
+.container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.card {
+  background: #1e1e1e;
+  padding: 20px;
+  width: 220px;
+  border-radius: 12px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0,255,204,0.2);
+}
+
+button {
+  margin-top: 10px;
+  padding: 10px;
+  background: #00ffcc;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 6px;
+}
+
+button:hover {
+  background: #00bfa6;
+}
+
+/* MAP BOX */
+.mapBox {
+  background: #111;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#home">Home</a>
+  <a href="#mods">Mods</a>
+  <a href="#maps">Maps</a>
+  <a href="#bot">Bot</a>
+  <a href="#pay">Payment</a>
+</nav>
+
+<!-- HOME -->
+<section id="home">
+  <h1>🔥 Minecraft Hub PRO</h1>
+  <p>Mods | Maps | Tools | Bot</p>
+</section>
+
+<!-- MODS -->
+<section id="mods">
+  <h2>🧩 Mods</h2>
+
+  <div class="container">
+
+    <div class="card">
+      <h3>OptiFine</h3>
+      <p>FPS boost + grafik</p>
+      <button onclick="downloadMod('OptiFine')">Download</button>
+    </div>
+
+    <div class="card">
+      <h3>JEI Mod</h3>
+      <p>Craft helper</p>
+      <button onclick="downloadMod('JEI')">Download</button>
+    </div>
+
+    <div class="card">
+      <h3>Minimap</h3>
+      <p>Map overlay</p>
+      <button onclick="downloadMod('Minimap')">Download</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- MAPS -->
+<section id="maps">
+  <h2>🗺 Maps System</h2>
+
+  <button onclick="getLocation()">📍 Location olish</button>
+
+  <div class="mapBox" id="mapBox">
+    Map hali yaratilmagan
+  </div>
+</section>
+
+<!-- BOT -->
+<section id="bot">
+  <h2>🤖 Bot</h2>
+  <p>Bloger tools + support</p>
+
+  <button onclick="openBot()">Bot ochish</button>
+</section>
+
+<!-- PAYMENT -->
+<section id="pay">
+  <h2>💳 Payment System</h2>
+
+  <button onclick="pay()">Sotib olish</button>
+
+  <p id="payStatus"></p>
+</section>
+
+<script>
+
+/* MOD DOWNLOAD */
+function downloadMod(name) {
+  alert(name + " yuklab olish boshlandi...");
+}
+
+/* LOCATION SYSTEM (FAKE + REAL API READY) */
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(pos){
+      let lat = pos.coords.latitude;
+      let lon = pos.coords.longitude;
+
+      document.getElementById("mapBox").innerHTML =
+        "📍 Sizning joylashuvingiz:<br>Lat: " + lat + "<br>Lon: " + lon +
+        "<br><br>(Map generator keyin qo‘shiladi)";
+    });
+  } else {
+    alert("Browser location support yo‘q");
+  }
+}
+
+/* BOT */
+function openBot() {
+  window.open("https://t.me/", "_blank");
+}
+
+/* PAYMENT (FAKE SYSTEM) */
+function pay() {
+  document.getElementById("payStatus").innerText =
+    "⏳ To‘lov jarayoni boshlandi... (demo)";
+}
+
+</script>
+
+</body>
+</html>
